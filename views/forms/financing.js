@@ -25,22 +25,24 @@ export default function FinancingForm({ onNextStep, onFormDataChange, formData, 
     const [lenders, setLenders] = useState(formData.lender || [''])
     const [tabIndex, setTabIndex] = useState(1);
 
+    // Initialize formik form handling with validation schema
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: formData,
         validationSchema: schema,
         onSubmit: async (values) => {
-            onFormDataChange(values);
-            await onNextStep();
+            onFormDataChange(values); // Update form data
+            await onNextStep(); // Proceed to the next step
         },
     });
 
     const { errors, touched, values, handleChange, handleSubmit, setFieldValue } = formik;
-
+    // Function to add a lender input field
     const addLender = () => {
         setLenders([...lenders, '']);
     };
-
+    // Function to remove a lender input field
     const removeLender = (index) => {
         if (lenders.length > 1) {
             const updatedLenders = [...lenders];

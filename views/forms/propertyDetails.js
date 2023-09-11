@@ -16,14 +16,15 @@ const schema = Yup.object().shape({
 });
 
 export default function PropertyDetailForm({ onNextStep, onFormDataChange, formData }) {
+    // Initialize formik form handling with validation schema
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: formData,
         validationSchema: schema,
 
         onSubmit: async (values) => {
-            onFormDataChange(values)
-            await onNextStep()
+            onFormDataChange(values); // Update form data
+            await onNextStep(); // Proceed to the next step
         },
     });
 

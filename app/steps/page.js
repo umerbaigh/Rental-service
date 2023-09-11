@@ -5,16 +5,16 @@ import { Step1Form, Step2Form, Step3Form, Congratulations } from '@/views/forms'
 import { Steps, Form1InitialValues, Form3InitialValues } from '@/constants/data';
 
 export default function page() {
-    const [step, setStep] = useState(0);
-    const [stepStatus, setStepStatus] = useState(Steps);
-    const [form1Data, setForm1Data] = useState(Form1InitialValues);
-    const [form3Data, setForm3Data] = useState(Form3InitialValues);
+    const [step, setStep] = useState(0); // State for the current step
+    const [stepStatus, setStepStatus] = useState(Steps); // State for step status
+    const [form1Data, setForm1Data] = useState(Form1InitialValues); // State for form1 data
+    const [form3Data, setForm3Data] = useState(Form3InitialValues); // State for form3 data
 
-
+    // Function to handle the next step in the form
     const handleNextStep = () => {
         if (step < stepStatus.length - 1) {
             setStep(step + 1);
-
+            // Update step status for the current and upcoming steps
             setStepStatus((prevStatus) => {
                 const updatedStatus = [...prevStatus];
                 updatedStatus[step].status = 'complete';
@@ -23,11 +23,11 @@ export default function page() {
             });
         }
     };
-
+    // Function to handle the previous step in the form
     const handlePreviousStep = () => {
         if (step > 0) {
             setStep(step - 1);
-
+            // Update step status for the current and previous steps
             setStepStatus((prevStatus) => {
                 const updatedStatus = [...prevStatus];
                 updatedStatus[step].status = 'upcoming';
@@ -39,7 +39,7 @@ export default function page() {
 
     return (
         <div className='bg-white rounded-lg shadow-sm grid lg:grid-cols-4 md:col-span-3 col-span-2 min-h-[95vh] '>
-            <div className='md:border-r border-none ' >
+            <div className='md:border-r border-none' >
                 <div className='p-10' >
                     <Stepper steps={stepStatus} />
                 </div>
