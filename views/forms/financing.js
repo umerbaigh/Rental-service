@@ -50,7 +50,10 @@ export default function FinancingForm({ onNextStep, onFormDataChange, formData, 
             setLenders(updatedLenders);
         }
     };
-
+    const handleBackClick = () => {
+        onFormDataChange(formik.values); // Save the current form data
+        onPreviousStep(); // Navigate back
+    };
     return (
         <div>
             <p className="text-xl font-semibold">Financing</p>
@@ -246,7 +249,7 @@ export default function FinancingForm({ onNextStep, onFormDataChange, formData, 
 
                 </div>
                 <div className='flex mt-4 float-right gap-4' >
-                    <button className='font-semibold' onClick={onPreviousStep} >
+                    <button className='font-semibold' type='submit' onClick={handleBackClick} >
                         Back
                     </button>
                     <Button  >

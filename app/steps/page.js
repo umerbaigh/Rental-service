@@ -4,7 +4,7 @@ import { Stepper } from '@/components'
 import { Step1Form, Step2Form, Step3Form, Congratulations } from '@/views/forms'
 import { Steps, Form1InitialValues, Form3InitialValues } from '@/constants/data';
 
-export default function page() {
+export default function Page() {
     const [step, setStep] = useState(0); // State for the current step
     const [stepStatus, setStepStatus] = useState(Steps); // State for step status
     const [form1Data, setForm1Data] = useState(Form1InitialValues); // State for form1 data
@@ -39,7 +39,7 @@ export default function page() {
 
     return (
         <div className='bg-white rounded-lg shadow-sm grid lg:grid-cols-4 md:col-span-3 col-span-2 min-h-[95vh] '>
-            <div className='md:border-r border-none' >
+            <div className='border-r ' >
                 <div className='p-10' >
                     <Stepper steps={stepStatus} />
                 </div>
