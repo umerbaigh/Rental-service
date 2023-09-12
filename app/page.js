@@ -1,6 +1,8 @@
-import Image from 'next/image'
-import Steps from './steps/page'
-export default function Home() {
+import Steps from '@/views/steps/page'
+
+
+export default async function Home() {
+
   return (
     <main className='p-4 bg-[#F5F5F5] min-h-screen' >
       <div>

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Input, Button } from '@/components';
 import { Tabs } from '@/constants/data';
 import { TabComp } from '@/components';
+import axios from 'axios';
 
 const schema = Yup.object().shape({
     lender: Yup.array()
@@ -21,7 +22,7 @@ const schema = Yup.object().shape({
     fees: Yup.number().required('Fees is required'),
 });
 
-export default function FinancingForm({ onNextStep, onFormDataChange, formData, onPreviousStep }) {
+export default function FinancingForm({ onNextStep, onFormDataChange, formData, onPreviousStep, form1Data }) {
     const [lenders, setLenders] = useState(formData.lender || [''])
     const [tabIndex, setTabIndex] = useState(1);
 
@@ -32,8 +33,13 @@ export default function FinancingForm({ onNextStep, onFormDataChange, formData, 
         initialValues: formData,
         validationSchema: schema,
         onSubmit: async (values) => {
-            onFormDataChange(values); // Update form data
-            await onNextStep(); // Proceed to the next step
+            try {
+                await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/properties`, form1Data);
+                onFormDataChange(values); // Update form data
+                await onNextStep(); // Proceed to the next step
+            } catch (e) {
+                console.log('something went wrong')
+            }
         },
     });
 
@@ -249,11 +255,11 @@ export default function FinancingForm({ onNextStep, onFormDataChange, formData, 
 
                 </div>
                 <div className='flex mt-4 float-right gap-4' >
-                    <button className='font-semibold' type='submit' onClick={handleBackClick} >
+                    <button className='font-semibold' onClick={handleBackClick} >
                         Back
                     </button>
-                    <Button  >
-                        Continue
+                    <Button>
+                        Submit
                     </Button>
                 </div>
 

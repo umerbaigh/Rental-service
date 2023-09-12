@@ -51,7 +51,7 @@ export default function Page() {
                 {step === 1 && <Step2Form onNextStep={handleNextStep}
                     onPreviousStep={handlePreviousStep} />}
 
-                {step === 2 && <Step3Form onNextStep={handleNextStep}
+                {step === 2 && <Step3Form onNextStep={handleNextStep} form1Data={form1Data}
                     onPreviousStep={handlePreviousStep} formData={form3Data}
                     onFormDataChange={(newFormData) => setForm3Data(newFormData)} />}
 

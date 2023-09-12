@@ -1,4 +1,6 @@
 export const TableHeaders = ['ID', 'Type', 'Rent', 'Width (ft)', 'Length (ft)', 'Market Rent', 'Status', 'SQFT/SQM']
+export const ListTableHeader = ['Property Name', 'Address Line', 'Country', 'City', 'Postal Code', 'Close Date']
+
 
 export const TableData = [
     ['E22', 'Indoor', '$160', '10', '20', '', 'Rented', '50'],
@@ -40,7 +42,7 @@ export const Steps = [
     { name: 'Property detail', status: 'current' },
     { name: 'Unit Mix', status: 'upcoming' },
     { name: 'Financing', status: 'upcoming' },
-    { name: 'Income & Expenses', status: 'upcoming' },
+    { name: 'View List', status: 'upcoming' },
 ]
 
 export const Tabs = [

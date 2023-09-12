@@ -1,4 +1,4 @@
-export default function Table({ headers, data }) {
+export default function Table({ headers, data, isChange }) {
     return (
         <div className=" overflow-x-auto   border rounded-lg shadow-sm">
             <table className="min-w-full divide-y" style={{ borderRadius: "10px" }}>
@@ -15,18 +15,68 @@ export default function Table({ headers, data }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((row, rowIndex) => (
-                        <tr key={rowIndex} className="bg-white">
-                            {row.map((cell, cellIndex) => (
+                    {isChange ? (
+
+                        data.map((row, rowIndex) => (
+                            <tr key={rowIndex} className="bg-white">
+
                                 <td
-                                    key={cellIndex}
+
                                     className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
                                 >
-                                    {cell}
+                                    {row.propertyName}
                                 </td>
-                            ))}
-                        </tr>
-                    ))}
+                                <td
+
+                                    className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                >
+                                    {row.line}
+                                </td>
+                                <td
+
+                                    className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                >
+                                    {row.country}
+                                </td>
+                                <td
+
+                                    className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                >
+                                    {row.city}
+                                </td>
+                                <td
+
+                                    className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                >
+                                    {row.postalCode}
+                                </td>
+                                <td
+
+                                    className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                >
+                                    {row.closeDate}
+                                </td>
+
+                            </tr>
+                        ))
+                    ) : (
+
+
+                        data.map((row, rowIndex) => (
+                            <tr key={rowIndex} className="bg-white">
+                                {row.map((cell, cellIndex) => (
+                                    <td
+                                        key={cellIndex}
+                                        className="px-6 border-r border-b py-4 whitespace-no-wrap text-center text-sm leading-5 font-medium text-gray-900"
+                                    >
+                                        {cell}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))
+
+                    )}
+
                 </tbody>
             </table>
         </div>

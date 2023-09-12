@@ -6,7 +6,6 @@ import { ArrowDownOnSquareIcon, ArrowUpOnSquareIcon } from "@heroicons/react/24/
 
 
 export default function RentRollForm({ onNextStep, onPreviousStep }) {
-
     return (
         <div>
             <div className='flex items-center lg:flex-nowrap flex-wrap justify-between' >
@@ -32,3 +31,4 @@ export default function RentRollForm({ onNextStep, onPreviousStep }) {
         </div>
     );
 }
+
